@@ -19,6 +19,7 @@ const app = Vue.createApp({
   methods: {
     addInputNames() {
       let playerName = this.inputName;
+
       if (this.validateInputName(playerName)) {
         this.errorMessage = "";
         this.names.push(playerName);
@@ -39,20 +40,25 @@ const app = Vue.createApp({
       }
       return true;
     },
-    randomLoser() {
-      let loserIndex = Math.floor(Math.random() * this.names.length);
-      console.log(loserIndex);
-      this.loserName = this.names[loserIndex];
+    getRandomLoser() {
+      return this.names[Math.floor(Math.random() * this.names.length)];
+    },
+    generateRandomLoser() {
+      let randomLoser = this.getRandomLoser();
+
+      if (this.loserName !== "") {
+        while (randomLoser === this.loserName) {
+          randomLoser = this.getRandomLoser();
+        }
+      }
+      this.loserName = randomLoser;
       this.state = false;
     },
     removePlayerName(index) {
       this.names.splice(index, 1);
     },
     chooseAgain() {
-      this.randomLoser();
-      if (this.loserName === this.loserName) {
-        this.randomLoser();
-      }
+      this.generateRandomLoser();
     },
     init() {
       this.state = true;
