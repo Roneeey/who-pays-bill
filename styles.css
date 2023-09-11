@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,19 +9,50 @@
 }
 
 #app {
+  background-color: blueviolet;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
 }
 
 .container {
   background-color: aqua;
-  min-height: 50%;
-  width: 50%;
+  min-height: 350px;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-container {
+  height: 30px;
+}
+
+.logo {
+  margin-bottom: 5%;
+}
+
+.add-names-button {
+  padding: 0 15px 0px 15px;
+  height: 100%;
+}
+
+#name-field {
+  height: 100%;
+  padding: 0 0 0 5px;
+  background-color: #fff;
+  border-style: none;
+}
+
+#name-field:focus {
+  outline: none;
 }
 
 h1 {
   font-family: "Kaushan Script", cursive;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
 }
