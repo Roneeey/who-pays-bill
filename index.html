@@ -17,7 +17,7 @@
         </div>
         <div class="input-container">
           <input id="name-field" type="text" v-model.trim="inputName" />
-          <button class="add-names-button" @click="addInputNames">></button>
+          <button class="add-names-button" @click="addInputNames">+</button>
         </div>
         <div class="error-message" v-if="errorState">{{ errorMessage }}</div>
         <div
