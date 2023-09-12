@@ -166,3 +166,49 @@ button:hover {
   text-align: center;
   margin-top: 30px;
 }
+
+@media (max-width: 768px) {
+  .container {
+    margin: 10% auto;
+    max-width: 90%;
+  }
+
+  .logo h1 {
+    font-size: 40px;
+  }
+
+  #name-field {
+    font-size: 16px;
+  }
+
+  .add-names-button {
+    font-size: 14px;
+  }
+
+  .list-input-names {
+    font-size: 14px;
+  }
+
+  .loser-screen h1 {
+    font-size: 40px;
+  }
+
+  .loser-display {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .btn-start-again,
+  .btn-choose-again {
+    padding: 8px 16px;
+  }
+
+  .intro-text {
+    margin-top: 20px;
+  }
+}
