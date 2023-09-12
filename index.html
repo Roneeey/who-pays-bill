@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles2.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="icon" href="data:," />
     <title>Who Pays The Bill</title>
   </head>
@@ -19,25 +23,57 @@
           <input id="name-field" type="text" v-model.trim="inputName" />
           <button class="add-names-button" @click="addInputNames">+</button>
         </div>
-        <div class="error-message" v-if="errorState">{{ errorMessage }}</div>
         <div
-          class="list-input-names"
+          class="error-message"
+          :class="{'animate__animated animate__shakeX': isAnimating}"
+          v-if="errorState"
+        >
+          {{ errorMessage }}
+        </div>
+        <div
+          class="list-input-names animate__animated animate__fadeIn"
           v-for="(name, index) in names"
           :key="index"
           @click="removePlayerName(index)"
         >
-          {{name}}
+          <div class="wrapper">
+            <div class="name">{{name}}</div>
+            <div class="exit">x</div>
+          </div>
         </div>
-        <button v-if="twoOrMoreNames" @click="generateRandomLoser()">
+        <button
+          class="animate__animated animate__fadeInUp"
+          v-if="twoOrMoreNames"
+          @click="generateRandomLoser()"
+        >
           Pick a loser
         </button>
+        <div
+          class="intro-text animate__animated animate__fadeIn"
+          v-if="introText"
+        >
+          Start by entering at least two names
+        </div>
       </div>
       <div class="loser-screen container" v-if="!state">
-        <h1>The loser is:</h1>
-        <div class="loser-display">{{loserName}}</div>
-        <button class="btn-start-again" @click="init()">Start Again</button>
-        <button class="btn-choose-again" @click="chooseAgain()">
-          Choose Again
+        <h1 class="animate__animated animate__fadeIn">The loser is:</h1>
+        <div
+          class="loser-display"
+          :class="{'animate__animated animate__tada': isAnimating}"
+        >
+          {{loserName}}
+        </div>
+        <button
+          class="btn-start-again animate__animated animate__fadeIn"
+          @click="init()"
+        >
+          Start again
+        </button>
+        <button
+          class="btn-choose-again animate__animated animate__fadeIn"
+          @click="chooseAgain()"
+        >
+          Choose again
         </button>
       </div>
     </div>

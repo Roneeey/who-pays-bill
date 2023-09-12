@@ -1,3 +1,4 @@
+const animation = document.getElementsByClassName("error-message");
 const app = Vue.createApp({
   data() {
     return {
@@ -7,11 +8,14 @@ const app = Vue.createApp({
       errorMessage: "",
       errorState: false,
       loserName: "",
+      isAnimating: false,
+      introText: true,
     };
   },
   computed: {
     twoOrMoreNames() {
       if (this.names.length > 1) {
+        this.introText = false;
         return true;
       }
     },
@@ -31,11 +35,13 @@ const app = Vue.createApp({
       if (this.inputName == "") {
         this.errorMessage = "Please enter a name";
         this.errorState = true;
+        this.setAnimation();
         return;
       }
       if (this.names.includes(this.inputName)) {
         this.errorMessage = "Please enter a UNIQUE name";
         this.errorState = true;
+        this.setAnimation();
         return;
       }
       return true;
@@ -45,6 +51,7 @@ const app = Vue.createApp({
     },
     generateRandomLoser() {
       let randomLoser = this.getRandomLoser();
+      this.setAnimation();
 
       if (this.loserName !== "") {
         while (randomLoser === this.loserName) {
@@ -60,6 +67,12 @@ const app = Vue.createApp({
     chooseAgain() {
       this.generateRandomLoser();
     },
+    setAnimation() {
+      this.isAnimating = true;
+      setTimeout(() => {
+        this.isAnimating = false;
+      }, 1000);
+    },
     init() {
       this.state = true;
       this.inputName = "";
@@ -67,6 +80,8 @@ const app = Vue.createApp({
       this.errorMessage = "";
       this.errorState = false;
       this.loserName = "";
+      this.isAnimating = false;
+      this.introText = true;
     },
   },
 }).mount("#app");
