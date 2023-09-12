@@ -20,7 +20,12 @@
           <h1>Who pays the bill?</h1>
         </div>
         <div class="input-container">
-          <input id="name-field" type="text" v-model.trim="inputName" />
+          <input
+            id="name-field"
+            type="text"
+            v-model.trim="inputName"
+            @keyup.enter="addInputNames"
+          />
           <button class="add-names-button" @click="addInputNames">+</button>
         </div>
         <div

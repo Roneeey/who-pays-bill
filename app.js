@@ -73,6 +73,11 @@ const app = Vue.createApp({
         this.isAnimating = false;
       }, 1000);
     },
+    handleEnterKey(event) {
+      if (event.key === "Enter") {
+        this.addInputNames();
+      }
+    },
     init() {
       this.state = true;
       this.inputName = "";
